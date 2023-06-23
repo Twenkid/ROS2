@@ -29,3 +29,9 @@ rviz
 
 network bridge ...
 
+https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+
+source /opt/ros/humble/setup.bash
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+
+
