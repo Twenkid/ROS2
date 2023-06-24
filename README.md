@@ -33,5 +33,25 @@ https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
 
 source /opt/ros/humble/setup.bash
 export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+-->
+gedit ~/.bashrc
+
+GPG issues with ROS, ardupilot, ... install ...
+https://answers.ros.org/question/410123/ubuntu-2204-ros2-humble-installing-error-gpg-libc-bin/
+
+sudo apt-get update --allow-insecure-repositories #doesn't always work for install scripts
+
+source /opt/ros/humble/setup.bash
+rviz2
+
+~/ardupilot/Tools/autotest$ python3 sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
+
+python3 sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
+
+gz sim --help
+ls /usr/share/gz/gz-garden/gazebodistro/
+ export GZ_SIM_RESOURCE_PATH=~/ardupilot_gazebo/worlds
+~/ardupilot_gazebo/worlds$ gz sim --render-engine ogre -v4 -r iris_runway.sdf
+
 
 
