@@ -53,5 +53,34 @@ ls /usr/share/gz/gz-garden/gazebodistro/
  export GZ_SIM_RESOURCE_PATH=~/ardupilot_gazebo/worlds
 ~/ardupilot_gazebo/worlds$ gz sim --render-engine ogre -v4 -r iris_runway.sdf
 
+...
+#Note: Trying to run samples from gazebo-garden and ardupilot on Win10/WSL Ubuntu 22.04.
+Where: `gz sim` works, with an addition `"--render-engine ogre"` due to an incompatibility between OpenGL and D3D12 which causes OGRE2 to crash. 
+
+The GUI to choose a sample works,ardupilot with SITL works, too.
+
+I've followed this installation path: https://ardupilot.org/dev/docs/sitl-with-gazebo.html
+I invoke the exports as asked:
+
+    export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/gz_ws/src/ardupilot_gazebo/build:$GZ_SIM_SYSTEM_PLUGIN_PATH
+    export GZ_SIM_RESOURCE_PATH=$HOME/gz_ws/src/ardupilot_gazebo/models:$HOME/gz_ws/src/ardupilot_gazebo/worlds:$GZ_SIM_RESOURCE_PATH
+
+    gz sim -v4 -r --render-engine ogre shapes.sdf :works
+    gz sim --render-engine ogre :works
+    gz sim -v4 -r --render-engine ogre :works (opens the GUI)
+
+This fails:
+
+    gz sim -v4 -r iris_runway.sdf
+    [Wrn] [gz.cc:100] Fuel world download failed because Fetch failed. Other errors
+    Unable to find or download file
+
+==>GZ_SIM_RESOURCE_PATH should be different in my case:
+GZ_SIM_RESOURCE_PATH=/home/tosh/gz_ws/src/ardupilot_gazebo/models:/home/tosh/gz_ws/src/ardupilot_gazebo/worlds:
+
+
+
+
+
 
 
